@@ -1,11 +1,5 @@
-body {
-font-family: "Century Gothic", CenturyGothic,  sans-serif !important;
-text-align: justify;
-background:linear-gradient(141deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%) !important;
-color: #17252A !important;
-font-weight: normal;
-font-size: 20px;
-}
+
+
 
 article {
   padding-left: 5em;
@@ -79,7 +73,10 @@ ul a, dl a{
 .list-inline a{
   color: white;
 }
-.list-inline >li:hover {animation-name: rainbow; animation-duration: 4s; animation-iteration-count:infinite; padding-left:20px; padding-right:20px;}
+.list-inline >li.link:hover {animation-name: rainbow; animation-duration: 4s; animation-iteration-count:infinite; padding-left:20px; padding-right:20px;}
+.list-inline>li:hover a{transform: rotate(5deg); }
+.list-inline{padding-left:0;margin-left:-5px;list-style:none;}
+.list-inline>li{display:inline-block;padding-right:5px;padding-left:5px; transition:padding 1s;}
 th, thead, tr{
   text-align: center;
 }
