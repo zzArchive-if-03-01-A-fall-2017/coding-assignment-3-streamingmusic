@@ -1,0 +1,129 @@
+body {
+font-family: "Century Gothic", CenturyGothic,  sans-serif !important;
+text-align: justify;
+background:linear-gradient(141deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%) !important;
+color: #17252A !important;
+font-weight: normal;
+font-size: 20px;
+}
+
+article {
+  padding-left: 5em;
+  padding-right: 5em;
+}
+
+
+h1{
+  font-size: 35px;
+  text-align: center;
+  text-transform: capitalize;
+  font-family: 'Futura', 'Raleway' sans-serif;
+  text-shadow: -1px 0 black, 0 2px black, 1px 0 black, 0 -1px black;
+  color: #FEFFFF;
+}
+h2{
+  text-align: left;
+  color: #FEFFFF;
+  font-family: 'Copperplate', 'Montserrat', cursive;
+  margin-bottom: 10px;
+}
+h3, h4{
+  text-align: left;
+  color:#DEF2F1;
+  font-family: 'Copperplate', 'Montserrat', cursive;
+  margin-bottom: 10px;
+}
+
+a:visited{
+  color:#000000;
+}
+a:link{
+  color: #59253A;
+}
+a.hover{
+  color: #bfbfbf;
+}
+ul{
+  list-style-type: none;
+
+}
+ul a, dl a{
+    font-weight: bold;
+}
+ .parallaxTech{
+  background-image: url("TechnologyPhoto.jpg");
+}
+
+.parallax1{
+  background-image: url("MainpagePhoto.jpg");
+
+}
+
+.parallax1, .parallaxTech{
+  min-height: 2500px;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height:600px;
+  background-color:linear-gradient(141deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%);
+}
+
+.list-inline
+{
+  background-color: black;
+  color: white;
+  text-align: center !important;
+}
+
+.list-inline a{
+  color: white;
+}
+.list-inline >li:hover {animation-name: rainbow; animation-duration: 4s; animation-iteration-count:infinite; padding-left:20px; padding-right:20px;}
+th, thead, tr{
+  text-align: center;
+}
+
+td, tr first-child
+{
+  background-color: #DEF2F1;
+}
+
+thead, th
+{
+  background-color: #B1E0DD !important;
+  padding-left: 5px !important;
+  padding-right: 5px !important;
+}
+
+.btn-link:hover
+{
+  color:#bfbfbf !important;
+}
+
+a .rotate{
+  transform: rotate(5deg);
+}
+
+.left-col {
+  width: 50%;
+  min-height: 200px;
+  border-right: 1px solid black;
+  float: left;
+  box-sizing: border-box;
+  padding-left: 5em;
+  padding-right:5em;
+
+}
+
+.right-col {
+  width: 50%;
+  min-height: 200px;
+  float: right;
+  padding-left: 5em;
+  padding-right:5em;
+}
+
+.table-bordered{
+margin: 0px auto !important;
+}
