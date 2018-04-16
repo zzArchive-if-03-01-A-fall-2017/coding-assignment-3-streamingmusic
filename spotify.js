@@ -1,60 +1,98 @@
-SC.initialize({
-  client_id: 'YOUR_CLIENT_ID',
-  redirect_uri: 'API_StreamingMusic.html'
+const app = {};
+
+window.onload = function(){
+  let store = document.getElementById("submit-button");
+  store.onclick = function(){
+    let artistsSearch = document.getElementById("search-box");
+    console.log(artistsSearch);
+    var artistsArray =artistsSearch.split(',');
+    localStorage.setItem(artistsSearch.id, artistsArray);
+  }
+}
+
+app.getArists = (artist) => $.ajax({ //Search for the entered artists
+	url: 'https://api.spotify.com/v1/search',
+	method: 'GET',
+	dataType: 'json',
+	data: {
+		type: 'artist',
+		q: artist
+	}
 });
 
-SC.connect().then(function() {
-  return SC.get('/me');
-}).then(function(me) {
-  alert('Hello, ' + me.username);
+app.getAristsAlbums = (id) => $.ajax({ // Get the artists' albums
+	url: `https://api.spotify.com/v1/artists/${id}/albums`,
+	method: 'GET',
+	dataType: 'json',
+	data: {
+		album_type: 'album',
+	}
 });
 
-var index = 0;
-var currentSongIndex = 0; //Index for current song
-//Song data
-var song = {
-    title: [],
-    artist: [],
-    id: [],
-    duration: []
+app.getAlbumSongs = (id) => $.ajax({ //get songs from albums
+	url: `https://api.spotify.com/v1/albums/${id}/tracks`,
+	method: 'GET',
+	dataType: 'json'
+});
+
+app.getAlbums = function(artists) {
+	let albums = artists.map(artist => app.getAristsAlbums(artist.id));
+	$.when(...albums)
+		.then((...albums) => {
+			let albumIds = albums
+				.map(a => a[0].items) //get the first element of the array
+				.reduce((prev,curr) => [...prev,...curr] ,[])
+				.map(album => app.getAlbumSongs(album.id));
+
+			app.getTracks(albumIds);
+		});
 };
 
-//Get one of my playlists and store the data of each song
-SC.get('playlists/8397828').then(function(playlist) { //Summer Playlist
-    playlist.tracks.forEach(function (track) {
-        song.id[index] = track.id;
-        console.log(track.title);
-        song.title[index] = track.title;
-        song.artist[index] = track.user.username;
-        song.duration[index] = track.duration;
-        console.log(track.duration);
-        index++;
-    });
+app.getTracks = function(tracks) {
+	$.when(...tracks)
+		.then((...tracks) => {
+			tracks = tracks
+				.map(getDataObject)
+				.reduce((prev,curr) => [...prev,...curr],[]);
+			const randomPlayList = getRandomTracks(50,tracks);
+			app.createPlayList(randomPlayList);
+		})
+};
 
-    playCurrentSong();
+app.createPlayList = function(songs) {
+	const baseUrl = 'https://embed.spotify.com/?theme=white&uri=spotify:trackset:My Playlist:';
+	songs = songs.map(song => song.id).join(',');
+	$('.loader').removeClass('show');
+	$('.playlist').append(`<iframe src="${baseUrl + songs}" height="400"></iframe>`);
+}
 
-    function playCurrentSong() {
-        console.log("got into playCurrentSong function");
-        //Stream playlist, looping when end of playlist is reached
-        SC.stream('/tracks/' + song.id[currentSongIndex]).then(function (player) {
-            player.play();
-        });
-        console.log("duration " + song.duration[currentSongIndex]);
-        setTimeout(queueNextSong, song.duration[currentSongIndex]);
-    }
+app.init = function() {
+	$('form').on('submit', function(e) {
+		e.preventDefault();
+		let artists = $('input[type=search]').val();
+		$('.loader').addClass('show');
+		artists = artists
+			.split(',')
+			.map(app.getArists);
 
-    function queueNextSong() {
-        console.log("got into queueNextSong function");
+		$.when(...artists)
+			.then((...artists) => {
+				artists = artists.map(a => a[0].artists.items[0]);
+				console.log(artists);
+				app.getAlbums(artists);
+			});
+	});
 
-        if (currentSongIndes < song.id.length) {
-            console.log(currentSongIndex);
-            //next index for next song id
-            currentSong++;
-        }
-        else {
-            currentSongIndex = 0;
-            console.log(currentSongIndex)
-        }
-        playCurrentSong();
-    }
-});
+}
+
+const getDataObject = arr => arr[0].items;
+
+function getRandomTracks(num, tracks) { //generate Playlist with random songs from the artists
+	const randomResults = [];
+	for(let i = 0; i < num; i++) {
+		randomResults.push(tracks[ Math.floor(Math.random() * tracks.length) ])
+	}
+	return randomResults;
+}
+
+$(app.init);
