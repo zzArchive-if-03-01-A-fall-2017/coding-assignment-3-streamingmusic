@@ -15,8 +15,6 @@ article {
   animation-duration: 4s;
   animation-iteration-count:infinite;
   color: red;
-  margin: 20px;
-  border:20px;
 }
 h1{
   font-size: 35px;
