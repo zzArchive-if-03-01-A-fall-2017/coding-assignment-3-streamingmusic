@@ -3,12 +3,17 @@ const app = {};
 window.onload = function(){
   let store = document.getElementById("submit-button");
   store.onclick = function(){
-    let artistsSearch = document.getElementById("search-box");
-    console.log(artistsSearch);
-    var artistsArray =artistsSearch.split(',');
-    localStorage.setItem(artistsSearch.id, artistsArray);
+    let artistsSearch = document.getElementById("search-box").value;
+    let i = 0;
+    let erg = "";
+    while (erg != null){
+        erg = localStorage.getItem('Artists' + i.toString());
+        i++;
+    }
+    i--;
+    localStorage.setItem("Artists" + i.toString(), artistsSearch);
   }
-}
+};
 
 app.getArists = (artist) => $.ajax({ //Search for the entered artists
 	url: 'https://api.spotify.com/v1/search',
@@ -64,7 +69,7 @@ app.createPlayList = function(songs) {
 	songs = songs.map(song => song.id).join(',');
 	$('.loader').removeClass('show');
 	$('.playlist').append(`<iframe src="${baseUrl + songs}" height="400"></iframe>`);
-}
+};
 
 app.init = function() {
 	$('form').on('submit', function(e) {
@@ -83,7 +88,7 @@ app.init = function() {
 			});
 	});
 
-}
+};
 
 const getDataObject = arr => arr[0].items;
 
