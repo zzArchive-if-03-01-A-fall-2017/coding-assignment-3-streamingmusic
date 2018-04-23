@@ -82,7 +82,7 @@ section,
 	border: 5px solid rgba(255,255,255,0.6);
 	animation: load ease 3s infinite;
 	padding: 0px;
-	display: flex;
+	display: flex !important;
 	justify-content: center;
 	align-items: center;
 }
