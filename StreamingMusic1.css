@@ -6,16 +6,7 @@ article {
   padding-right: 5em;
 }
 
- .center {
-   margin:auto;
-   text-align: center;
-}
-.animationRainbow:hover{
-  animation-name:rainbow;
-  animation-duration: 4s;
-  animation-iteration-count:infinite;
-  color: red;
-}
+
 h1{
   font-size: 35px;
   text-align: center;

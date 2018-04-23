@@ -4,7 +4,7 @@ window.onload = function(){
   let store = document.getElementById("submit-button");
   store.onclick = function(){
     let artistsSearch = document.getElementById("search-box").value;
-    let i = 0;
+    let i = 1;
     let erg = "";
     while (erg != null){
         erg = localStorage.getItem('Artists' + i.toString());
@@ -12,6 +12,10 @@ window.onload = function(){
     }
     i--;
     localStorage.setItem("Artists" + i.toString(), artistsSearch);
+  }
+  let clearButton = document.getElementById("clear");
+  clearButton.onclick = function(){
+    localStorage.clear();
   }
 };
 

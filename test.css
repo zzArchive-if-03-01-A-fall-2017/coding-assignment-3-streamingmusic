@@ -20,9 +20,12 @@ iframe {
 .main-container form,
 section,
 .playlist {
-	display: flex;
+
 	align-items: center;
 	justify-content: center;
+}
+.flex{
+		display: flex;
 }
 
 .form,
@@ -53,6 +56,7 @@ section,
 	padding: 0 10px 0 10px;
 	color: #463e3e;
 	flex: 1 0 200px;
+	width: 400px;
 }
 
 .main-container input[type=submit] {
@@ -62,8 +66,12 @@ section,
 	flex: 1 0 100px;
 	box-shadow: inset 0px 0px 0px rgba(0,0,0,0.1);
 	transition: box-shadow 0.3s ease;
+	width: 100px;
 }
 
+.main-container input[type=button] {
+	width: 90px;
+}
 .main-container input[type=submit]:hover {
 	box-shadow: inset 1px 1px 1px rgba(0,0,0,0.2);
 }
