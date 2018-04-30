@@ -1,3 +1,6 @@
+// TAKE A LOOK AT: https://github.com/jmperez/spotify-web-api-js
+//import * as SpotifyWebApi from 'spotify-web-api-js';
+//let app = new SpotifyWebApi();
 const app = {};
 
 window.onload = function(){
