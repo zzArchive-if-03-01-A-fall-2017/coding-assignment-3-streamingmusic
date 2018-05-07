@@ -1,9 +1,18 @@
+//install node.js (npm), browserify, then
 // TAKE A LOOK AT: https://github.com/jmperez/spotify-web-api-js
-//import * as SpotifyWebApi from 'spotify-web-api-js';
-//let app = new SpotifyWebApi();
-const app = {};
 
-window.onload = function(){
+let Spotify = require('js/spotify-web-api.js');
+let spotify = new Spotify();
+
+
+//Probe ob das funktioniert
+spotify.getArtistAlbums('43ZHCT0cAZBISjO8DG9PnE', function(err, data) {
+  if (err) console.error(err);
+  else console.log('Artist albums', data);
+});
+/*const app = {};
+
+window.onload = function(){  //Local storage
   let store = document.getElementById("submit-button");
   store.onclick = function(){
     let artistsSearch = document.getElementById("search-box").value;
@@ -106,5 +115,5 @@ function getRandomTracks(num, tracks) { //generate Playlist with random songs fr
 	}
 	return randomResults;
 }
-
+*/
 $(app.init);
