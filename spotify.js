@@ -1,50 +1,48 @@
 //install node.js (npm), browserify, then
 // TAKE A LOOK AT: https://github.com/jmperez/spotify-web-api-js
 
-let Spotify = require('js/spotify-web-api.js');
-let spotify = new Spotify();
-
-
-//Probe ob das funktioniert
-spotify.getArtistAlbums('43ZHCT0cAZBISjO8DG9PnE', function(err, data) {
-  if (err) console.error(err);
-  else console.log('Artist albums', data);
-});
-/*const app = {};
+const app = {};
+/*
+let artistsLength = 0;
+let artistsArray =[];
 
 window.onload = function(){  //Local storage
   let store = document.getElementById("submit-button");
   store.onclick = function(){
     let artistsSearch = document.getElementById("search-box").value;
-    let i = 1;
-    let erg = "";
-    while (erg != null){
-        erg = localStorage.getItem('Artists' + i.toString());
-        i++;
+    let artists = artistsSearch.split(",");
+    let i;
+    for ( i = artistsLength; i < artists.length+artistsLength; i++) {
+      localStorage.setItem("Artist"+ i.toString(),artists[i-artistsLength]);
     }
-    i--;
-    localStorage.setItem("Artists" + i.toString(), artistsSearch);
+    artistsLength = i;
+
   }
   let clearButton = document.getElementById("clear");
   clearButton.onclick = function(){
     localStorage.clear();
+    artistsLength = 0;
   }
-};
+};*/
+
 
 app.getArists = (artist) => $.ajax({ //Search for the entered artists
-	url: 'https://api.spotify.com/v1/search',
+	url: 'https://api.spotify.com/v1/search/',
 	method: 'GET',
 	dataType: 'json',
+    headers: {"authorization": "Bearer BQAMG36lU1e9GAtdi_Cm4oBIP5NFmogBM1xUcbPl4yuPJ60PqHnNkikJLKVLJRJhzOTrpXq0ugha9skHuog1rQazC8ghGXRszZ7JffrTMZLBNJBdh_9mjfs4liYe2Cn52FnZss6n"},
 	data: {
 		type: 'artist',
-		q: artist
+		q: artist,
+        limit: 1
 	}
 });
 
 app.getAristsAlbums = (id) => $.ajax({ // Get the artists' albums
 	url: `https://api.spotify.com/v1/artists/${id}/albums`,
 	method: 'GET',
-	dataType: 'json',
+    headers: {"authorization": "Bearer BQAMG36lU1e9GAtdi_Cm4oBIP5NFmogBM1xUcbPl4yuPJ60PqHnNkikJLKVLJRJhzOTrpXq0ugha9skHuog1rQazC8ghGXRszZ7JffrTMZLBNJBdh_9mjfs4liYe2Cn52FnZss6n"},
+    dataType: 'json',
 	data: {
 		album_type: 'album',
 	}
@@ -53,7 +51,8 @@ app.getAristsAlbums = (id) => $.ajax({ // Get the artists' albums
 app.getAlbumSongs = (id) => $.ajax({ //get songs from albums
 	url: `https://api.spotify.com/v1/albums/${id}/tracks`,
 	method: 'GET',
-	dataType: 'json'
+    headers: {"authorization": "Bearer BQAMG36lU1e9GAtdi_Cm4oBIP5NFmogBM1xUcbPl4yuPJ60PqHnNkikJLKVLJRJhzOTrpXq0ugha9skHuog1rQazC8ghGXRszZ7JffrTMZLBNJBdh_9mjfs4liYe2Cn52FnZss6n"},
+    dataType: 'json'
 });
 
 app.getAlbums = function(artists) {
@@ -115,5 +114,6 @@ function getRandomTracks(num, tracks) { //generate Playlist with random songs fr
 	}
 	return randomResults;
 }
-*/
+
 $(app.init);
+
