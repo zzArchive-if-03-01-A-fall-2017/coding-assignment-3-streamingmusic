@@ -2,7 +2,7 @@
 // TAKE A LOOK AT: https://github.com/jmperez/spotify-web-api-js
 
 const app = {};
-/*
+
 let artistsLength = 0;
 let artistsArray =[];
 
@@ -23,14 +23,14 @@ window.onload = function(){  //Local storage
     localStorage.clear();
     artistsLength = 0;
   }
-};*/
+};
 
 
 app.getArists = (artist) => $.ajax({ //Search for the entered artists
 	url: 'https://api.spotify.com/v1/search/',
 	method: 'GET',
 	dataType: 'json',
-    headers: {"authorization": "Bearer BQAMG36lU1e9GAtdi_Cm4oBIP5NFmogBM1xUcbPl4yuPJ60PqHnNkikJLKVLJRJhzOTrpXq0ugha9skHuog1rQazC8ghGXRszZ7JffrTMZLBNJBdh_9mjfs4liYe2Cn52FnZss6n"},
+    headers: {'Authorization': 'Bearer BQAMG36lU1e9GAtdi_Cm4oBIP5NFmogBM1xUcbPl4yuPJ60PqHnNkikJLKVLJRJhzOTrpXq0ugha9skHuog1rQazC8ghGXRszZ7JffrTMZLBNJBdh_9mjfs4liYe2Cn52FnZss6n'},
 	data: {
 		type: 'artist',
 		q: artist,
@@ -116,4 +116,3 @@ function getRandomTracks(num, tracks) { //generate Playlist with random songs fr
 }
 
 $(app.init);
-
