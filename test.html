@@ -36,12 +36,16 @@
 
             <form action="">
 
-                <input id="search" type="search" value="">
-
+                <input id="search" type="search" value="" placeholder="Please enter two or more artists">
+                <input id="tracks" type="search" value="" placeholder="How many tracks">
                 <input type="submit" value="Create">
 
+
             </form>
-            <button onclick="login()">Login</button>
+            <select id="devices">
+            </select>
+            <button id="playDevice" type="button" onclick="playD()">Play on Device</button>
+           <!-- <button onclick="login()">Login</button>-->
         </div>
 
         <div class="playlist">
