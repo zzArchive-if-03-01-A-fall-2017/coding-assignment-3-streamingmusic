@@ -1,47 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>Spotify</title>
-	<link rel="stylesheet" href="StreamingMusic1.css">
-	<link href="css/bootstrap.min.css" rel="stylesheet">
-	  <link rel="stylesheet" href="test.css">
-		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script> <!--imported jQuery bc of error $(app.init); -->
-		<script type="module" src="spotify.js" charset="utf-8"></script>
+    <meta charset="UTF-8">
+    <title>Spotify</title>
+    <link rel="stylesheet" href="StreamingMusic1.css">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="test.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+    <!--imported jQuery bc of error $(app.init); -->
+    <script type="module" src="spotify.js" charset="utf-8"></script>
 
 
 </head>
 <body>
-	<section id="block">
-		<ul class= "list-inline">
-			<li class="small">By Ivonne Gattringer & Sara Panturu</li>
-			<li class="link"><a href="StreamingMusic1.html" class="btn btn-link btn-lg" role="button">Mainpage</a></li>
-			<li class="link"><a href="HistoryOfStreamingMusic.html" class="btn btn-link btn-lg" role="button">History</a></li>
-			<li class="link"><a href="ComparingStreamingMusic.html" class="btn btn-link btn-lg" role="button">Comparing services</a></li>
-			<li class="link"><a href="LegalRestrictionsStreamingMusic.html" class="btn btn-link btn-lg " role="button">Legal restrictions</a></li>
-			<li class="link"><a href="TechnologyStreamingMusic.html" class="btn btn-link btn-lg" role="button">Technology</a></li>
-			<li class="link"><a href="ProContraStreamingMusic.html" class="btn btn-link btn-lg" role="button">Pros and cons</a></li>
-		</ul>
-	</section>
-	<main class="main-container">
-		<section>
-			<div class="form">
-				<form action="">
-				  <label>Search Artists</label>
-					<input id="search-box" type="search" value="">
-					<input id ="submit-button" type="submit" value="Store">
-					<input id ="clear" type="button" name="Clear" value="Clear">
-				</form>
-			</div>
-			<div class="playlist">
-				<div class="loader">
-					<div class="inner-circle"></div>
-				</div>
-			</div>
-			</section
-	</main>
-	<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-	<script type="module" src="spotify.js"></script>
-	<iframe src="https://open.spotify.com/user/212cr3hhoxep4qyw5tfsc55pa/playlist/1Fiv9Zi2YGqUEKqhXw9PQt" width ="400" height="380" frameborder="0" allowtransparency="true"</iframe>-->
+<section id="block">
+    <ul class="list-inline">
+        <li class="small">By Ivonne Gattringer & Sara Panturu</li>
+        <li class="link"><a href="StreamingMusic1.html" class="btn btn-link btn-lg" role="button">Mainpage</a></li>
+        <li class="link"><a href="HistoryOfStreamingMusic.html" class="btn btn-link btn-lg" role="button">History</a>
+        </li>
+        <li class="link"><a href="ComparingStreamingMusic.html" class="btn btn-link btn-lg" role="button">Comparing
+            services</a></li>
+        <li class="link"><a href="LegalRestrictionsStreamingMusic.html" class="btn btn-link btn-lg " role="button">Legal
+            restrictions</a></li>
+        <li class="link"><a href="TechnologyStreamingMusic.html" class="btn btn-link btn-lg"
+                            role="button">Technology</a></li>
+        <li class="link"><a href="ProContraStreamingMusic.html" class="btn btn-link btn-lg" role="button">Pros and
+            cons</a></li>
+    </ul>
+</section>
+<main class="main-container">
+    <section>
+
+        <div class="form">
+
+            <form action="">
+
+                <input id="search" type="search" value="">
+
+                <input type="submit" value="Create">
+
+            </form>
+            <button onclick="login()">Login</button>
+        </div>
+
+        <div class="playlist">
+
+            <div class="loader">
+
+                <div class="inner-circle"></div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+<script src="spotify.js"></script>
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script type="module" src="spotify.js"></script>
+<iframe src="https://open.spotify.com/user/212cr3hhoxep4qyw5tfsc55pa/playlist/1Fiv9Zi2YGqUEKqhXw9PQt" width ="400" height="380" frameborder="0" allowtransparency="true"</iframe>-->
 </body>
 </html>
