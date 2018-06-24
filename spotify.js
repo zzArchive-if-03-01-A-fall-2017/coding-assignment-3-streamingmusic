@@ -5,7 +5,7 @@ const app = {};
 
 let artistsLength = 0;
 let artistsArray = [];
-let oauthToken = 'BQCjK1iMvsbeTSrYQQWdNakL-5PxSjvPFzIjMG_rFmcdKLn1zPmGz-XRVrFXBe4adPt6U2FIimDXm281uhxjZZAjPuN91uGo0YKArmlxy0bLyBwQDzuZE_z-gFOVW7PPNb3wPpbr-G6ZwGlxyw8UpIl3j2O_eLSfD0gFVo-UD0u60o7ViMAtgg8V-f7TUEdXF2ciaqzm9lin3lIjNA8Me7mvolq7ySGvuZsRAB3ZOdl05UHmDxTjMLDe5UmDUErGKi3H8YiC0a5UNPTRwueCYUcD75E';
+let oauthToken = 'BQACw3p_Ay0bqefPfdVwo7pNVXsMG2gboSTaHWvqcFLz_WVW7qglEMWNEBeyRtYE7U51mpHhhycTrHOaHreALRh1nDImaF66TWwnn3zu5J3WW9cYixo0RGuUSi5Wcw9Uzajym3IK4fuQh42yaAtKmtk5GhSiwZZN3qwH6VeVUN0wiAen7eZ5qgDUXxwczIY6TZ3dVhV-a-YasoJX24uOWViCWN6s_U7yG_OmvIRlDx9rBrc2eQTEF9RQdX6CMVfis0a2J43_eIauK-7h3YX19mWXYfQ';
 let devices = [];
 let names = [];
 let currentPlaylist = null;
@@ -138,7 +138,10 @@ app.getUserAvailableDevices = () => $.ajax({
             }));
         }
         if(devices.length === 0){
-
+          var elem = document.getElementById('playDevice');
+          elem.parentNode.removeChild(elem);
+          let elm2 = document.getElementById('devices');
+          elm2.parentNode.removeChild(elm2);
         }
     }
 });
