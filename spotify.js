@@ -5,7 +5,7 @@ const app = {};
 
 let artistsLength = 0;
 let artistsArray = [];
-let oauthToken = 'BQACw3p_Ay0bqefPfdVwo7pNVXsMG2gboSTaHWvqcFLz_WVW7qglEMWNEBeyRtYE7U51mpHhhycTrHOaHreALRh1nDImaF66TWwnn3zu5J3WW9cYixo0RGuUSi5Wcw9Uzajym3IK4fuQh42yaAtKmtk5GhSiwZZN3qwH6VeVUN0wiAen7eZ5qgDUXxwczIY6TZ3dVhV-a-YasoJX24uOWViCWN6s_U7yG_OmvIRlDx9rBrc2eQTEF9RQdX6CMVfis0a2J43_eIauK-7h3YX19mWXYfQ';
+let oauthToken = 'BQC3QIAMqV6TZu7z9kXM-ctU-1wzXhqOFxmhxURGI9Eq_F6Pt7LyVMnUp0FrewmmUUEFTjxHQaeHeSWcGjsDg7kAcdvM8T8J2172TfH8IRGhf9Fp17Hd2OW9lfGnuLU8djZgpmtMqM82W-xXZ8t2ziEG5GbqVEyRnScpWT2BVZdETq7hyAwUm8L10mwKP1NOAcJ8e-UL_4jZksITt2cQEmgaJx7Uu982LyPWLe8VHLsoqu2s59ePUqvI6UZv45x9irGR35jNaypkhIxrqvUE0lMr3Es';
 let devices = [];
 let names = [];
 let currentPlaylist = null;
@@ -75,11 +75,18 @@ app.getAlbums = function (artists) {
 };
 
 app.getTracks = function (tracks) {
+  console.log(tracks);
     $.when(...tracks)
         .then((...tracks) => {
+          console.log(tracks);
+          try {
             tracks = tracks
                 .map(getDataObject)
                 .reduce((prev, curr) => [...prev, ...curr], []);
+          } catch (e) {
+            tracks = tracks[0]['items'].map(a => a);
+          }
+
             console.log(tracks);
             playlist = app.createPlayList('diesiebenzwerge-at');
             playlistID = '';
